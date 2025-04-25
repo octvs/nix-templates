@@ -1,0 +1,48 @@
+{texlive}:
+texlive.combine {
+  inherit
+    (texlive)
+    scheme-basic
+    # from list at README.md
+    adjustbox
+    babel-german
+    background
+    bidi
+    collectbox
+    csquotes
+    everypage
+    filehook
+    footmisc
+    footnotebackref
+    framed
+    fvextra
+    letltxmacro
+    ly1
+    mdframed
+    mweights
+    needspace
+    pagecolor
+    sourcecodepro
+    sourcesanspro
+    titling
+    ucharcat
+    unicode-math
+    upquote
+    xecjk
+    xurl
+    zref
+    # try and fail
+    koma-script
+    setspace
+    caption
+    collection-fontsrecommended
+    etoolbox
+    float
+    l3kernel
+    l3packages
+    listings
+    lm
+    xcolor
+    xkeyval
+    ;
+}
