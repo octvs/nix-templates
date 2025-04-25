@@ -1,1 +1,9 @@
-{texlive}: texlive.combine {inherit (texlive) scheme-basic;}
+{texlive}:
+texlive.combine {
+  inherit
+    (texlive)
+    scheme-basic
+    koma-script
+    xcolor
+    ;
+}
