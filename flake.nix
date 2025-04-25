@@ -10,5 +10,8 @@
     pkgs = nixpkgs.legacyPackages.${sys};
   in {
     packages.${sys} = import ./pkgs pkgs;
+    templates = {
+      eisvogel.path = ./templates/tex/eisvogel;
+    };
   };
 }

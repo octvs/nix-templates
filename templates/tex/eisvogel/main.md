@@ -1,0 +1,3 @@
+# A document
+
+That sadly has to pass through latex. At least pandoc is here...
