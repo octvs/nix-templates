@@ -11,6 +11,7 @@
   in {
     packages.${sys} = import ./pkgs pkgs;
     templates = {
+      doortag.path = ./templates/tex/doortag;
       eisvogel.path = ./templates/tex/eisvogel;
     };
   };

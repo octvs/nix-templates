@@ -1,0 +1,20 @@
+\documentclass{article}
+
+\usepackage[most]{tcolorbox}
+\newtcolorbox{cenbox}[1][]{enhanced,
+  %nobeforeafter, %only needed if more labels should be printed on a special paper with self-adhesive labels
+  sharp corners, valign=center, halign=center, boxrule=1pt, boxsep=0pt,
+  colback=white, colframe=black, left=2pt, top=2pt, right=2pt, bottom=2pt, #1 }
+
+\begin{document}
+\begin{cenbox}[width=6.5cm,height=1.7cm]
+  \LARGE{ Doe \\ Smith}
+\end{cenbox}
+
+\vspace{10pt}
+
+\begin{cenbox}[width=6.5cm,height=1.7cm]
+  \LARGE{ Smith }
+\end{cenbox}
+
+\end{document}
