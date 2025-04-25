@@ -48,6 +48,8 @@ stdenvNoCC.mkDerivation {
     sed -e '/\$hypersetup\.latex()\$/ {' -e 'r template-multi-file/hypersetup.latex' -e 'd' -e '}' -i "$out/eisvogel.beamer"
     sed -e '/\$passoptions\.latex()\$/ {' -e 'r template-multi-file/passoptions.latex' -e 'd' -e '}' -i "$out/eisvogel.beamer"
 
+    cp "README.md" "$out/README.md"
+
     runHook postInstall
   '';
 }

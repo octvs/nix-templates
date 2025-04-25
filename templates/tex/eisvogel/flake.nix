@@ -19,6 +19,7 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [eisvogel];
       TEMPLATE = "${eisvogel}/eisvogel.latex";
+      TEMPLATEDOC = "${eisvogel}/README.md";
     };
   };
 }

@@ -13,6 +13,7 @@
     templates = {
       doortag.path = ./templates/tex/doortag;
       eisvogel.path = ./templates/tex/eisvogel;
+      python.path = ./templates/python;
     };
   };
 }
