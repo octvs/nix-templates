@@ -15,6 +15,7 @@
       python.path = ./templates/python;
       typst-base.path = ./templates/typst/base;
       typst-letter.path = ./templates/typst/letter;
+      typst-name-tag.path = ./templates/typst/name-tag;
     };
   };
 }
