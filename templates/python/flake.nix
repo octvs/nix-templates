@@ -3,29 +3,24 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  }:
-    flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        runtimeDeps = with pkgs.python3Packages; [pandas];
-        buildDeps = with pkgs.python3Packages; [setuptools];
-        devDeps = with pkgs.python3Packages; [pandas-stubs mypy];
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({...}: {
+      systems = import inputs.systems;
+      perSystem = {pkgs, ...}: let
+        dependencies = with pkgs.python3.pkgs; [numpy];
       in {
         packages.default = pkgs.python3Packages.buildPythonApplication {
           pname = "foo";
-          version = "0.1";
+          version = "0-unstable";
           pyproject = true;
-          propagatedBuildInputs = runtimeDeps ++ buildDeps;
           src = ./.;
+          build-system = with pkgs.python3.pkgs; [setuptools];
+          inherit dependencies;
         };
-        devShells.default = pkgs.mkShell {buildInputs = runtimeDeps ++ devDeps;};
-      }
-    );
+      };
+    });
 }
