@@ -1,0 +1,29 @@
+name: "Format Check"
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # 2. Use the Determinate Systems Nix installer (Fastest & most reliable)
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          determinate: false
+      # 4. Run the flake formatter in check mode
+      - name: Check Formatting
+        run: |
+          SYSTEM="x86_64-linux"
+          # This returns 0 (success) if the formatter exists, and 1 (failure) if it doesn't
+          if nix eval .#formatter."$SYSTEM" --quiet --no-warn-dirty > /dev/null 2>&1; then
+              echo "✅ Formatter is defined"
+              nix fmt -- --ci
+          else
+              echo "❌ No formatter defined"
+          fi
